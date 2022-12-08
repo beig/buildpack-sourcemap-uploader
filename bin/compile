@@ -25,3 +25,4 @@ sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY 
 
 cd dist/siteplan-web-app
 rm -v *.js.map
+rm -v *.css.map
