@@ -23,9 +23,10 @@ for var in OPENREPLAY_API_KEY OPENREPLAY_ID_STAGING OPENREPLAY_ID_PRODUCTION OPE
   fi
 done
 
-sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_ID_STAGING dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL_STAGING
-sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_ID_PRODUCTION dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL_PRODUCTION
+cd ./dist/siteplan-web-app
 
-cd dist/siteplan-web-app
+sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_ID_STAGING dir -m . -u $OPENREPLAY_ASSETS_URL_STAGING
+sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_ID_PRODUCTION dir -m . -u $OPENREPLAY_ASSETS_URL_PRODUCTION
+
 rm -v *.js.map
 rm -v *.css.map
