@@ -23,4 +23,4 @@ for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
   fi
 done
 
-sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_PROJECT_STAGING dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
+sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_PROJECT dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
