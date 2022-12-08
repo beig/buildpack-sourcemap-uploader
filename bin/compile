@@ -8,8 +8,6 @@ readonly ENV_DIR=$3
 cd ${BUILD_DIR}
 npm i -g @openreplay/sourcemap-uploader
 npm i -g glob
-TEST=$(ls -alF .)
-echo $TEST
 
 readonly OPENREPLAY_API_KEY=$(cat ${ENV_DIR}/OPENREPLAY_API_KEY)
 readonly OPENREPLAY_PROJECT=$(cat ${ENV_DIR}/OPENREPLAY_PROJECT)
@@ -24,3 +22,6 @@ for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
 done
 
 sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_PROJECT dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
+
+cd dist/siteplan-web-app
+rm -v *.js.map
