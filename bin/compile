@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly BUILD_DIR=$1
+readonly ENV_DIR=$3
+
+cd ${BUILD_DIR}
+TEST=$(ls -alF .)
+echo $TEST
+
+for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
+  if [[ ! -f "${ENV_DIR}/${var}" ]]; then
+    echo "-----> The ${var} variable is not defined. Please do it."
+    echo "       Source maps NOT uploaded"
+    exit 1
+  fi
+done
+
+cd ${BUILD_DIR}
+
