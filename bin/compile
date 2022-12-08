@@ -10,10 +10,10 @@ npm i -g @openreplay/sourcemap-uploader
 npm i -g glob
 
 readonly OPENREPLAY_API_KEY=$(cat ${ENV_DIR}/OPENREPLAY_API_KEY)
-readonly OPENREPLAY_PROJECT=$(cat ${ENV_DIR}/OPENREPLAY_PROJECT)
+readonly OPENREPLAY_ID=$(cat ${ENV_DIR}/OPENREPLAY_ID)
 readonly OPENREPLAY_ASSETS_URL=$(cat ${ENV_DIR}/OPENREPLAY_ASSETS_URL)
 
-for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
+for var in OPENREPLAY_API_KEY OPENREPLAY_ID OPENREPLAY_ASSETS_URL; do
   if [[ ! -f "${ENV_DIR}/${var}" ]]; then
     echo "-----> The ${var} variable is not defined. Please do it."
     echo "       Source maps NOT uploaded"
@@ -21,7 +21,7 @@ for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
   fi
 done
 
-sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_PROJECT dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
+sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_ID dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
 
 cd dist/siteplan-web-app
 rm -v *.js.map
