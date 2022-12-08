@@ -6,6 +6,9 @@ readonly BUILD_DIR=$1
 readonly ENV_DIR=$3
 
 cd ${BUILD_DIR}
+npm i -g @openreplay/sourcemap-uploader
+npm i -g glob
+npm run generate-source-maps
 TEST=$(ls -alF .)
 echo $TEST
 
@@ -18,4 +21,4 @@ for var in OPENREPLAY_API_KEY OPENREPLAY_PROJECT OPENREPLAY_ASSETS_URL; do
 done
 
 cd ${BUILD_DIR}
-
+sourcemap-uploader -s https://openreplay.siteplan.at/api -k $OPENREPLAY_API_KEY -p $OPENREPLAY_PROJECT_STAGING dir -m ./dist/siteplan-web-app -u $OPENREPLAY_ASSETS_URL
